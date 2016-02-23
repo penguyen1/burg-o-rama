@@ -36,7 +36,7 @@ burgers.route('/:id')
       return;
     }
     burgerData[bID] = req.body;       // stores new info into bID in burgerData
-    res.redirect('/burgers/'+bID);           // redirect to burgers/:id
+    res.redirect('/burgers/'+bID);    // redirect to burgers/:id
   })
   .delete((req,res)=>{
     var bID = req.params.id;

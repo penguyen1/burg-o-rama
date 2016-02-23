@@ -10,7 +10,7 @@ var burgerData = [];
 // SHOW BURGERS
 burgers.route('/')
   .get((req,res)=>{
-    res.send(burgerData);           // displays ALL burgers
+    res.render('pages/burger_list', {data: burgerData});           // displays ALL burgers
   })
   .post((req,res)=>{
     burgerData.push(req.body);
@@ -26,7 +26,8 @@ burgers.route('/:id')
       res.sendStatus(404);
       return;
     }
-    res.send(burgerData[bID]);        // display burgerData info of :id
+    res.render('pages/burger_one', {data: burgerData[bID]});
+    // res.send(burgerData[bID]);        // display burgerData info of :id
   })
   .put((req,res)=>{
     var bID = req.params.id;          // store :id in bID
@@ -49,10 +50,26 @@ burgers.route('/:id')
   });
 
 // SHOW NEW BURGER FORM
-burgers.get('/new', dumpMethod);
+burgers.get('/new', (req,res)=>{
+  res.render('pages/burger_edit', {
+    data: {
+      title: 'Create Your Specicial Burger!',
+      burgerURL: '/burgers/'
+      // submitMethod = 'post'
+    }
+  });
+});
 
 // SHOW EDIT BURGER FORM
-burgers.get('/:id/edit', dumpMethod);
+burgers.get('/:id/edit', (req,res)=>{
+  res.render('pages/burger_edit', {
+    data: {
+      title: 'Change Up Your Dream Burger!',
+      burgerURL: '/burgers/' + req.params.id + '?_method=PUT'
+      // submitMethod = 'post'
+    }
+  });
+});
 
 
 module.exports = burgers;

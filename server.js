@@ -1,39 +1,36 @@
 'use strict'
-var express   = require('express');
-var logger    = require('morgan');
-var path      = require('path');
+var express         = require('express');
+var logger          = require('morgan');
+var path            = require('path');
+var bodyParser      = require('body-parser');
+var methodOverride  = require('method-override');
 
 var app       = express();
-var port = process.env.PORT || 3000;
-
-app.use(logger('dev'));
+var port      = process.env.PORT || 3000;
+var burgerRoutes = require(path.join(__dirname, '/routes/burgers'));  // this is a directory path!!
 
 var dumpMethod = (req,res)=>res.send( req.method + " burgers!" );
 
+app.use(logger('dev'));
+app.use( bodyParser.urlencoded({ extended: false }) );    // allows bodyParser for POST methods
+app.use( bodyParser.json() );
+app.use( methodOverride('_method') );                     // allows method override for PUT & DELETE methods
 
-// ROUTES
+
 
 // HOMEPAGE
-app.get('/', dumpMethod)
-
-// SHOW BURGERS
-app.get('/burgers', dumpMethod)
-app.post('/burgers', dumpMethod)
-
-// SINGLE BURGER
-app.get('/burgers/:id', dumpMethod)
-app.put('/burgers/:id', dumpMethod)
-app.delete('/burgers/:id', dumpMethod)
-
-// SHOW NEW BURGER FORM
-app.get('/burgers/new', dumpMethod)
-
-// SHOW EDIT BURGER FORM
-app.get('/burgers/:id/edit', dumpMethod)
+app.get('/', dumpMethod);
 
 
 
 
 
+
+
+
+
+
+// redirect to burgers route
+app.use('/burgers', burgerRoutes);
 
 app.listen(port, ()=>console.log('LETS GET IT BOII!', port));

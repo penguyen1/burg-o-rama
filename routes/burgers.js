@@ -10,7 +10,6 @@ var burgerData = [];
 // SHOW BURGERS
 burgers.route('/')
   .get((req,res)=>{
-    console.log('redirected!');                         //   \\ testing redirect
     res.send(burgerData);           // displays ALL burgers
   })
   .post((req,res)=>{
@@ -40,8 +39,8 @@ burgers.route('/:id')
   })
   .delete((req,res)=>{
     var bID = req.params.id;
-    if(!(bID in burgerData)){         // fails silently
-      res.redirect(303, '/burgers/');                                         // does this redirect us??!?!
+    if(!(bID in burgerData)){         // fails silently - what does that mean????
+      res.redirect(303, '/burgers/');              
       return;                         
     }
     console.log('i shouldnt be here!!!');

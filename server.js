@@ -19,7 +19,7 @@ app.use('view engine', 'ejs');                            // automatically the r
 
 
 // HOMEPAGE
-app.get('/', dumpMethod);
+app.get('/', (req,res)=>res.render('pages/home'));        // this is a directory path!!
 
 
 

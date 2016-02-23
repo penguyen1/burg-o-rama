@@ -15,7 +15,7 @@ app.use(logger('dev'));
 app.use( bodyParser.urlencoded({ extended: false }) );    // allows bodyParser for POST methods
 app.use( bodyParser.json() );
 app.use( methodOverride('_method') );                     // allows method override for PUT & DELETE methods
-
+app.use('view engine', 'ejs');                            // automatically the root directory for views (ejs, html)
 
 
 // HOMEPAGE

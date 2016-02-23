@@ -36,17 +36,17 @@ burgers.route('/:id')
       return;
     }
     burgerData[bID] = req.body;       // stores new info into bID in burgerData
-    res.redirect('/burgers/'+bID);           // redirect to burgers/:id
+    res.redirect(303, '/burgers/'+bID);           // redirect to burgers/:id
   })
   .delete((req,res)=>{
     var bID = req.params.id;
     if(!(bID in burgerData)){         // fails silently
-      res.redirect('/burgers/');                                         // does this redirect us??!?!
+      res.redirect(303, '/burgers/');                                         // does this redirect us??!?!
       return;                         
     }
     console.log('i shouldnt be here!!!');
     burgerData.splice(bID, 1);        // start at index bID & remove 1 element      \\ wont this shift all the other indices down??
-    res.redirect('/burgers/');
+    res.redirect(303, '/burgers/');
   });
 
 // SHOW NEW BURGER FORM

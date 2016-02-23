@@ -9,14 +9,37 @@ var burgerData = [];
 
 // SHOW BURGERS
 burgers.route('/')
-  .get((req,res)=>{
+  .get( (req,res)=>{
+    // res.send(burgerData);
     res.render('pages/burger_list', {data: burgerData});           // displays ALL burgers
   })
-  .post((req,res)=>{
+  .post( (req,res)=>{
     burgerData.push(req.body);
     var newID = burgerData.length-1;
     res.redirect('/burgers/' +newID);
   });
+
+// SHOW NEW BURGER FORM
+burgers.get('/new', (req,res)=>{
+  res.render('pages/burger_edit', {
+    data: {
+      title: 'Create Your Special Burger!',
+      burgerURL: '/burgers/',
+      submitMethod: 'post'
+    }
+  });
+});
+
+// SHOW EDIT BURGER FORM
+burgers.get('/:id/edit', (req,res)=>{
+  res.render('pages/burger_edit', {
+    data: {
+      title: 'Change Up Your Dream Burger!',
+      burgerURL: '/burgers/' + req.params.id + '?_method=PUT',
+      submitMethod: 'post'
+    }
+  });
+});
 
 // SINGLE BURGER
 burgers.route('/:id')
@@ -49,27 +72,6 @@ burgers.route('/:id')
     res.redirect(303, '/burgers/');
   });
 
-// SHOW NEW BURGER FORM
-burgers.get('/new', (req,res)=>{
-  res.render('pages/burger_edit', {
-    data: {
-      title: 'Create Your Specicial Burger!',
-      burgerURL: '/burgers/'
-      // submitMethod = 'post'
-    }
-  });
-});
-
-// SHOW EDIT BURGER FORM
-burgers.get('/:id/edit', (req,res)=>{
-  res.render('pages/burger_edit', {
-    data: {
-      title: 'Change Up Your Dream Burger!',
-      burgerURL: '/burgers/' + req.params.id + '?_method=PUT'
-      // submitMethod = 'post'
-    }
-  });
-});
 
 
 module.exports = burgers;

@@ -20,7 +20,20 @@
 
       <div class="starter-template">
         <% for(var i in data){ %> 
-          <%= data[i] %> 
+
+          <div>
+            <p>Name: <%= data[i].name %></p>
+            <p>Meat: <%= data[i].meat %></p>
+            <p>Doneness: <%= data[i].temperature %></p>
+            <p>Cheese: <%= data[i].cheese %></p>
+            <p>Extras: 
+            <% var extras = data[i].extras; %>
+            <% for(var x=0; x<extras.length; x++){ %>
+              <%= extras[x] %>
+            <% } %>
+            </p>
+          </div>
+
         <% } %> 
       </div>
 

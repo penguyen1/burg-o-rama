@@ -15,7 +15,8 @@ app.use(logger('dev'));
 app.use( bodyParser.urlencoded({ extended: false }) );    // allows bodyParser for POST methods
 app.use( bodyParser.json() );
 app.use( methodOverride('_method') );                     // allows method override for PUT & DELETE methods
-app.set('view engine', 'ejs');                            // automatically the root directory for views (ejs, html)
+app.set('views', './views');                              // automatically the root directory for views (ejs, html)
+app.set('view engine', 'ejs');                            
 app.use(express.static(path.join(__dirname, 'public')));  // static route to public
 
 

@@ -1,3 +1,4 @@
+pry  = require('pryjs');
 'use strict'
 var express         = require('express');
 var logger          = require('morgan');
@@ -5,6 +6,7 @@ var path            = require('path');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 
+var db        = require('./db/pg');           // links server.js to pg.js
 var app       = express();
 var port      = process.env.PORT || 3000;
 var burgerRoutes = require(path.join(__dirname, '/routes/burgers'));  // this is a directory path!!

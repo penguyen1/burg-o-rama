@@ -23,15 +23,10 @@
 
           <div>
             <p>Name: <%= data[i].name %></p>
-            <p>Meat: <%= data[i].meat %></p>
-            <p>Doneness: <%= data[i].temperature %></p>
-            <p>Cheese: <%= data[i].cheese %></p>
-            <p>Extras: 
-            <% var extras = data[i].extras; %>
-            <% for(var x=0; x<extras.length; x++){ %>
-              <%= extras[x] %>
-            <% } %>
-            </p>
+            <p>Meat: <%= data[i].meat_id %></p>
+            <p>Doneness: <%= data[i].bun_id %></p>
+            <p>Cheese: <%= data[i].doneness %></p><br>
+
           </div>
 
         <% } %> 

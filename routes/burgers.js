@@ -1,25 +1,30 @@
 'use strict'
 var express = require('express');
 var burgers = express.Router();
+var bodyParser = require('body-parser');
+var db = require('./../db/pg');
 
 var dumpMethod = (req,res)=>res.send( req.method + " burgers!" );
 var burgerData = [];
 
 // ROUTES
 
-// SHOW BURGERS
+// SHOW ALL BURGERS
 burgers.route('/')
-  .get( (req,res)=>{
+  .get(db.allBurgers, (req,res)=>{
+    // console.log(res.rows);
     // res.send(burgerData);
-    res.render('pages/burger_list', {data: burgerData});           // displays ALL burgers
+    res.render('pages/burger_list', {data: res.rows});           // displays ALL burgers
   })
-  .post( (req,res)=>{
-    burgerData.push(req.body);
-    var newID = burgerData.length-1;
-    res.redirect('/burgers/' +newID);
+  .post(db.createBurger,(req,res)=>{      //  db.addCheese, db.addTopping, 
+    // burgerData.push(req.body);
+    // var newID = burgerData.length-1;
+    // res.redirect('/burgers/' +newID);
+    // res.send(req.body);
+    res.redirect('/burgers/');
   });
 
-// SHOW NEW BURGER FORM
+// NEW BURGER FORM
 burgers.get('/new', (req,res)=>{
   res.render('pages/burger_edit', {
     data: {
@@ -30,18 +35,18 @@ burgers.get('/new', (req,res)=>{
   });
 });
 
-// SHOW EDIT BURGER FORM
+// EDIT BURGER FORM
 burgers.get('/:id/edit', (req,res)=>{
   res.render('pages/burger_edit', {
     data: {
-      title: 'Change Up Your Dream Burger!',
+      title: 'Edit Your Dream Burger!',
       burgerURL: '/burgers/' + req.params.id + '?_method=PUT',
       submitMethod: 'post'
     }
   });
 });
 
-// SINGLE BURGER
+// GET|EDIT|DELETE A SINGLE BURGER
 burgers.route('/:id')
   .get((req,res)=>{
     var bID = req.params.id;          // store :id in bID
@@ -49,8 +54,8 @@ burgers.route('/:id')
       res.sendStatus(404);
       return;
     }
-    res.render('pages/burger_one', {data: burgerData[bID]});
-    // res.send(burgerData[bID]);        // display burgerData info of :id
+    // res.render('pages/burger_one', {data: burgerData[bID]});
+    res.send(burgerData[bID]);        // display burgerData info of :id
   })
   .put((req,res)=>{
     var bID = req.params.id;          // store :id in bID
@@ -59,11 +64,7 @@ burgers.route('/:id')
       return;
     }
     burgerData[bID] = req.body;       // stores new info into bID in burgerData
-<<<<<<< HEAD
-    res.redirect('/burgers/'+bID);    // redirect to burgers/:id
-=======
     res.redirect(303, '/burgers/'+bID);           // redirect to burgers/:id
->>>>>>> c3b91b02e82b466b5ecdea7fc56fb9ad2be3cada
   })
   .delete((req,res)=>{
     var bID = req.params.id;

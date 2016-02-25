@@ -1,3 +1,4 @@
+-- By Peter
 DROP TABLE if exists cheeses CASCADE;
 DROP TABLE if exists toppings CASCADE;
 DROP TABLE if exists buns CASCADE;
@@ -14,8 +15,7 @@ CREATE TABLE cheeses (
 
 CREATE TABLE toppings (
   topping_id serial PRIMARY KEY UNIQUE,
-  name VARCHAR(255),
-  type VARCHAR(255)
+  name VARCHAR(255)
 );
 
 CREATE TABLE buns (
@@ -32,6 +32,7 @@ CREATE TABLE meats(
 
 CREATE TABLE orders(
   order_id serial PRIMARY KEY UNIQUE,
+  name VARCHAR(255),
   meat_id  integer REFERENCES meats,
   bun_id integer REFERENCES buns,
   doneness VARCHAR(255)

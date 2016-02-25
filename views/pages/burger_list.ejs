@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-            <%- include ../partials/head %>
+    <%- include ../partials/head %>
   </head>
+
   <body>
-    
     <header>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-            <%- include ../partials/nav %>
-      </nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <%- include ../partials/nav %>
+    </nav>
     </header>
+    
     <div class="container">
-
-
-
-
-
-
-
       <div class="starter-template">
-        <% for(var i in data){ %> 
 
-          <div>
-            <p>Name: <%= data[i].name %></p>
-            <p>Meat: <%= data[i].meat_id %></p>
-            <p>Doneness: <%= data[i].bun_id %></p>
-            <p>Cheese: <%= data[i].doneness %></p><br>
-
+      <% for(var i in data){ %> 
+        <div>
+          <div><b>
+            Order ID: <%= data[i].order_id %><br>
+            Name: <%= data[i].name %><br>
+            Meat: <%= data[i].meat_id %><br>
+            Bun: <%= data[i].bun_id %><br>
+            Doneness: <%= data[i].doneness %><br>
           </div>
+          <!-- cheeses -->
+          <!-- toppings -->
 
-        <% } %> 
+          <% var edit = data[i].order_id + "/edit" %>  
+          <% var remove = data[i].order_id + "?_method=delete" %>  
+
+          <form action=<%= edit %> method="get">
+            <button> Edit </button>
+          </form>
+          <form action=<%= remove %> method="post">
+            <button> Delete </button>
+          </form>
+        </b></div><br>
+
+      <% } %> 
+
       </div>
-
-
-
-
-
-
-
-
-
-
     </div><!-- /.container -->
-
-            <%- include ../partials/footer %>
-  
-</body></html>
+    <%- include ../partials/footer %>
+  </body>
+</html>

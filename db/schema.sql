@@ -8,9 +8,9 @@ DROP TABLE if exists cheeses_orders_join CASCADE;
 DROP TABLE if exists toppings_orders_join CASCADE;
 
 CREATE TABLE cheeses (
-       cheese_id serial PRIMARY KEY UNIQUE,
-       name VARCHAR(255),
-       country VARCHAR(255)
+  cheese_id serial PRIMARY KEY UNIQUE,
+  name VARCHAR(255),
+  country VARCHAR(255)
 );
 
 CREATE TABLE toppings (
@@ -39,13 +39,13 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE cheeses_orders_join (
-       order_id integer REFERENCES orders,
-       cheese_id integer REFERENCES cheeses,
-       PRIMARY KEY (order_id, cheese_id)
+  order_id integer REFERENCES orders ON DELETE CASCADE,
+  cheese_id integer REFERENCES cheeses ON DELETE CASCADE,
+  PRIMARY KEY (order_id, cheese_id)
 );
 
 CREATE TABLE toppings_orders_join (
-       order_id integer REFERENCES orders,
-       topping_id integer REFERENCES toppings,
-       PRIMARY KEY (order_id, topping_id)
+  order_id integer REFERENCES orders ON DELETE CASCADE,
+  topping_id integer REFERENCES toppings ON DELETE CASCADE,
+  PRIMARY KEY (order_id, topping_id)
 );

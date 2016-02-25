@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-            <%- include ../partials/head %>
+    <%- include ../partials/head %>
   </head>
 
   <body>
@@ -10,16 +10,13 @@
           <%- include ../partials/nav %>
       </nav>
     </header>
-    <main>
-      
-    
-    <div class="container">
 
+    <main>
+    <div class="container">
       <div class="starter-template">
         <h1> <%= data.title %> </h1>
-        <form class="form-horizontal" action="<%= data.burgerURL %>" method= "<%= data.submitMethod %>">
+        <form class="form-horizontal" action="<%= data.burgerURL %>" method= "post">
         <fieldset>
-
 
         <!-- Text input-->
         <div class="form-group">
@@ -37,7 +34,7 @@
               <option value="2">Ground Brisket</option>
               <option value="3">Angus</option>
               <option value="4">Elk</option>
-              <option value="5">Porbellyk</option>
+              <option value="5">Pork Belly</option>
               <option value="6">Pork</option>
             </select>
           </div>
@@ -45,25 +42,25 @@
 
         <!-- Doneness -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="temperature">Meat Temperature</label>
+          <label class="col-md-4 control-label" for="temperature">How well do you like your meat?</label>
           <div class="col-md-6">
             <select id="temperature" name="temperature" class="form-control">
               <option value="Rare">Rare</option>
-              <option value="Medium_Rare">Medium_Rare</option>
+              <option value="Medium_Rare">Medium Rare</option>
               <option value="Medium">Medium</option>
-              <option value="Medium_Well">Medium_Well</option>
-              <option value="Well_Done">Well_Done</option>
+              <option value="Medium_Well">Medium Well</option>
+              <option value="Well_Done">Well Done</option>
             </select>
           </div>
         </div>
 
         <!-- Buns -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="buns">buns</label>
+          <label class="col-md-4 control-label" for="buns">Buns</label>
           <div class="col-md-6">
             <select id="buns" name="buns" class="form-control">
               <option value="1">Brioche</option>
-              <option value="2">Whole_Wheat</option>
+              <option value="2">Whole Wheat</option>
               <option value="3">Sesame</option>
               <option value="4">White</option>
               <option value="5">Focacchia</option>
@@ -158,26 +155,16 @@
 
         <!-- Button -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="submit">Submit</label>
-          <div class="col-md-4">
-            <button id="submit" type="submit" class="btn btn-lg btn-success">Burger Me!</button>
-          </div>
+        <div class="col-md-4">
+          <button id="submit" type="submit" class="btn btn-lg btn-success"><%= data.buttonTitle %></button>
+        </div>
         </div>
 
         </fieldset>
         </form>
-
       </div>
-
     </div><!-- /.container -->
-
-
-
     </main>
-
-
-
-            <%- include ../partials/footer %>
-  
-
-</body></html>
+    <%- include ../partials/footer %>
+  </body>
+</html>

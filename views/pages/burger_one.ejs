@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-            <%- include ../partials/head %>
+    <%- include ../partials/head %>
   </head>
+
   <body>
-    
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top">
-            <%- include ../partials/nav %>
+        <%- include ../partials/nav %>
       </nav>
     </header>
     <div class="container">
+      <h1> Your Burger Details: </h1>
+      <div class="starter-template"><b>
+        <div>Name: <%= data[0].name %> </div>
+        <div>Meat: <%= data[0].meat_id %> </div>
+        <div>Bun: <%= data[0].bun_id %> </div>
+        <div>Doneness: <%= data[0].doneness %> </div>
+        <!-- cheeses -->
+        <!-- toppings -->
 
-
-
-
-
-    
-
-
-      <div class="starter-template">
-          <%= data %> 
-      </div>
-
-
-
-
-
-
-
-
+      </b></div>
 
     </div><!-- /.container -->
-
-            <%- include ../partials/footer %>
-  
-</body></html>
+    <%- include ../partials/footer %>
+  </body>
+</html>

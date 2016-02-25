@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-            <%- include ../partials/head %>
+    <%- include ../partials/head %>
   </head>
 
   <body>
@@ -10,91 +10,144 @@
           <%- include ../partials/nav %>
       </nav>
     </header>
-    <main>
-      
-    
-    <div class="container">
 
+    <main>
+    <div class="container">
       <div class="starter-template">
         <h1> <%= data.title %> </h1>
-        <p class="lead">Use this form to build a burger.</p>
-        <form class="form-horizontal" action="<%= data.burgerURL %>" method= "<%= data.submitMethod %>">
+        <form class="form-horizontal" action="<%= data.burgerURL %>" method= "post">
         <fieldset>
-
 
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="name">Burger Name</label>  
           <div class="col-md-6">
-          <input id="name" name="name" type="text" placeholder="placeholder" class="form-control input-md" required="">
-          <span class="help-block">Please name your burger</span>  
-          </div>
+          <input id="name" name="name" type="text" placeholder="What's its name?" class="form-control input-md" required="">          </div>
         </div>
 
-        <!-- Select Basic -->
+        <!-- Meats -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="meat">Meat</label>
           <div class="col-md-6">
             <select id="meat" name="meat" class="form-control">
-              <option value="Bœuf">Bœuf</option>
-              <option value="Chicken">Chicken</option>
-              <option value="Ostrich">Ostrich</option>
-              <option value="Bison">Bison</option>
-              <option value="Pork">Pork</option>
-              <option value="Vegan">Vegan</option>
+              <option value="1">Bison</option>
+              <option value="2">Ground Brisket</option>
+              <option value="3">Angus</option>
+              <option value="4">Elk</option>
+              <option value="5">Pork Belly</option>
+              <option value="6">Pork</option>
             </select>
           </div>
         </div>
 
-        <!-- Select Basic -->
+        <!-- Doneness -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="temperature">Meat Temperature</label>
+          <label class="col-md-4 control-label" for="temperature">How well do you like your meat?</label>
           <div class="col-md-6">
             <select id="temperature" name="temperature" class="form-control">
               <option value="Rare">Rare</option>
-              <option value="Medium_Rare">Medium_Rare</option>
+              <option value="Medium_Rare">Medium Rare</option>
               <option value="Medium">Medium</option>
-              <option value="Medium_Well">Medium_Well</option>
-              <option value="Well_Done">Well_Done</option>
+              <option value="Medium_Well">Medium Well</option>
+              <option value="Well_Done">Well Done</option>
             </select>
           </div>
         </div>
 
-        <!-- Select Basic -->
+        <!-- Buns -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="cheese">Cheese</label>
+          <label class="col-md-4 control-label" for="buns">Buns</label>
           <div class="col-md-6">
-            <select id="cheese" name="cheese" class="form-control">
-              <option value="">None</option>
-              <option value="American">American</option>
-              <option value="Swiss">Swiss</option>
-              <option value="Gruyere">Gruyere</option>
-              <option value="Humboldt">Humboldt</option>
-              <option value="Mozzarella">Mozzarella</option>
+            <select id="buns" name="buns" class="form-control">
+              <option value="1">Brioche</option>
+              <option value="2">Whole Wheat</option>
+              <option value="3">Sesame</option>
+              <option value="4">White</option>
+              <option value="5">Focacchia</option>
+              <option value="6">None</option>
             </select>
           </div>
         </div>
 
-        <!-- Multiple Checkboxes -->
+        <!-- Cheeses -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="cheese">Cheeses</label>
+          <div class="col-md-4">
+            <div class="checkbox">
+            <label for="cheeses-1">
+              <input type="checkbox" name="cheeses" id="cheeses-1" value="1"> Muenster
+            </label>
+            <label for="cheeses-2">
+              <input type="checkbox" name="cheeses" id="cheeses-2" value="2"> Swiss
+            </label>
+            <label for="cheeses-3">
+              <input type="checkbox" name="cheeses" id="cheeses-3" value="3"> American
+            </label>
+            <label for="cheeses-4">
+              <input type="checkbox" name="cheeses" id="cheeses-4" value="4"> Cheddar
+            </label>
+            <label for="cheeses-5">
+              <input type="checkbox" name="cheeses" id="cheeses-5" value="5"> Emmentaler
+            </label>
+            <label for="cheeses-6">
+              <input type="checkbox" name="cheeses" id="cheeses-6" value="6"> Blue Cheese
+            </label>
+            <label for="cheeses-7">
+              <input type="checkbox" name="cheeses" id="cheeses-7" value="7"> Queso Blanco
+            </label>
+            <label for="cheeses-8">
+              <input type="checkbox" name="cheeses" id="cheeses-8" value="8"> None
+            </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toppings -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="extras">Extras</label>
           <div class="col-md-4">
           <div class="checkbox">
-            <label for="extras-0">
-              <input type="checkbox" name="extras" id="extras-0" value="Bacon">
-              Bacon
-            </label>
             <label for="extras-1">
-              <input type="checkbox" name="extras" id="extras-1" value="Tomato">
-              Tomato
+              <input type="checkbox" name="extras" id="extras-1" value="1"> Tomatoes
             </label>
             <label for="extras-2">
-              <input type="checkbox" name="extras" id="extras-2" value="Pickles">
-              Pickles
+              <input type="checkbox" name="extras" id="extras-2" value="2"> Caramelized Onions
             </label>
             <label for="extras-3">
-              <input type="checkbox" name="extras" id="extras-3" value="Onions">
-              Onions
+              <input type="checkbox" name="extras" id="extras-3" value="3"> Dijon Mustard
+            </label>
+            <label for="extras-4">
+              <input type="checkbox" name="extras" id="extras-4" value="4"> Lettuce
+            </label>
+            <label for="extras-5">
+              <input type="checkbox" name="extras" id="extras-5" value="5"> Pickles
+            </label>
+            <label for="extras-6">
+              <input type="checkbox" name="extras" id="extras-6" value="6"> Bacon
+            </label>
+            <label for="extras-7">
+              <input type="checkbox" name="extras" id="extras-7" value="7"> Onions
+            </label>
+            <label for="extras-8">
+              <input type="checkbox" name="extras" id="extras-8" value="8"> Hash Brown
+            </label>
+              <label for="extras-9">
+              <input type="checkbox" name="extras" id="extras-9" value="9"> Fried Egg
+            </label>
+            <label for="extras-10">
+              <input type="checkbox" name="extras" id="extras-10" value="10"> Grilled Onions
+            </label>
+            <label for="extras-11">
+              <input type="checkbox" name="extras" id="extras-11" value="11"> Ketchup
+            </label>
+            <label for="extras-12">
+              <input type="checkbox" name="extras" id="extras-12" value="12"> Maple Syrup
+            </label>
+            <label for="extras-13">
+              <input type="checkbox" name="extras" id="extras-13" value="13"> Sunny Side Up Egg
+            </label>
+            <label for="extras-14">
+              <input type="checkbox" name="extras" id="extras-14" value="14"> None
             </label>
           </div>
           </div>
@@ -102,26 +155,16 @@
 
         <!-- Button -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="submit">Submit</label>
-          <div class="col-md-4">
-            <button id="submit" type="submit" class="btn btn-lg btn-success">Burger Me!</button>
-          </div>
+        <div class="col-md-4">
+          <button id="submit" type="submit" class="btn btn-lg btn-success"><%= data.buttonTitle %></button>
+        </div>
         </div>
 
         </fieldset>
         </form>
-
       </div>
-
     </div><!-- /.container -->
-
-
-
     </main>
-
-
-
-            <%- include ../partials/footer %>
-  
-
-</body></html>
+    <%- include ../partials/footer %>
+  </body>
+</html>
